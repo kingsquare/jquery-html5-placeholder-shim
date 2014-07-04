@@ -54,6 +54,7 @@
           }
 
           var isBorderBox = ($this.css('box-sizing') === 'border-box');
+          var isTextarea = $this.is('textarea');
 
           var ol = $('<label />')
             .text($this.attr('placeholder'))
@@ -66,9 +67,9 @@
               textAlign: 'left',
               color: config.color,
               cursor: 'text',
-              paddingTop: isBorderBox ? '0' : $this.css('padding-top'),
+              paddingTop: !isTextarea && isBorderBox ? '0' : $this.css('padding-top'),
               paddingRight: $this.css('padding-right'),
-              paddingBottom: isBorderBox ? '0' : $this.css('padding-bottom'),
+              paddingBottom: !isTextarea && isBorderBox ? '0' : $this.css('padding-bottom'),
               paddingLeft: $this.css('padding-left'),
               fontSize: $this.css('font-size'),
               fontFamily: $this.css('font-family'),
