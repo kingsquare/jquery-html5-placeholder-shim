@@ -88,14 +88,15 @@
                 }
             })
             .insertBefore(this);
-          $this
-            .data('placeholder',ol)
-						.keydown(function(){
-							ol.hide();
-						})
-						.blur(function() {
-              ol[$this.val().length ? 'hide' : 'show']();
-            }).triggerHandler('blur');
+            $this
+                .data('placeholder', ol)
+                .on('keydown', function () {
+                    ol.hide();
+                })
+                .on('blur change', function () {
+                    ol[$this.val().length ? 'hide' : 'show']();
+                })
+                .triggerHandler('blur');
           $(window).one("resize", function () { adjustToResizing(ol); });
         }
       });
